@@ -3,24 +3,18 @@ import Holes from "./Holes";
 import { useState, useEffect } from "react";
 
 const Box = () => {
-  const [index, setIndex] = useState(0);
+  // // const startGame = () => {
+  // //   setInterval(getRandom, 1000);
+  // // };
 
-  const getRandom = () => setIndex(Math.floor(Math.random() * 5) + 1);
-
-  // const startGame = () => {
-  //   setInterval(getRandom, 1000);
-  // };
-
-  useEffect(() => {
-    const interval = setInterval(getRandom, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const [score, setScore] = useState(0);
 
   return (
     <>
       {/* <StyledButton onClick={startGame}>Start!</StyledButton> */}
+      <h3> Score: {score} </h3>
       <BoxWrapper>
-        <Holes />
+        <Holes score={score} setScore={setScore} />
       </BoxWrapper>
       {/* <p>{index}</p> */}
     </>
