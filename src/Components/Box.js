@@ -1,14 +1,29 @@
-import { BoxWrapper, Hole } from "../styles";
+import { BoxWrapper, StyledButton } from "../styles";
+import Holes from "./Holes";
+import { useState, useEffect } from "react";
 
 const Box = () => {
-  const hole_ids = [1, 2, 3, 4, 5];
+  const [index, setIndex] = useState(0);
+
+  const getRandom = () => setIndex(Math.floor(Math.random() * 5) + 1);
+
+  // const startGame = () => {
+  //   setInterval(getRandom, 1000);
+  // };
+
+  useEffect(() => {
+    const interval = setInterval(getRandom, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <BoxWrapper>
-      {hole_ids.map(() => (
-        <Hole />
-      ))}
-    </BoxWrapper>
+    <>
+      {/* <StyledButton onClick={startGame}>Start!</StyledButton> */}
+      <BoxWrapper>
+        <Holes />
+      </BoxWrapper>
+      {/* <p>{index}</p> */}
+    </>
   );
 };
 
